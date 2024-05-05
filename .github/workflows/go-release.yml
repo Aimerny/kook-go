@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         run: |
           git version
-          git clone "${{ github.event.repository.html_url }}" /home/runner/work/KookBot/KookBot
+          git clone "${{ github.event.repository.html_url }}" /home/runner/work/kook-go/kook-go
           git checkout "${{ github.ref }}"
 
       - name: Set up Go
