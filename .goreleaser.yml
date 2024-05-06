@@ -27,8 +27,6 @@ builds:
         goarch: arm
       - goos: darwin
         goarch: '386'
-      - goos: linux
-        goarch: '386'
     mod_timestamp: "{{ .CommitTimestamp }}"
     flags:
       - -trimpath
