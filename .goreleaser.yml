@@ -7,7 +7,7 @@ release:
   draft: true
   discussion_category_name: General
 builds:
-  - id: all
+  - id: kook-go
     env:
       - CGO_ENABLED=0
       - GO111MODULE=on
@@ -16,19 +16,8 @@ builds:
       - darwin
       - windows
     goarch:
-      - '386'
       - amd64
-      - arm
       - arm64
-    goarm:
-      - '7'
-    ignore:
-      - goos: darwin
-        goarch: arm
-      - goos: darwin
-        goarch: '386'
-      - goos: linux
-        goarch: '386'
     mod_timestamp: "{{ .CommitTimestamp }}"
     flags:
       - -trimpath
@@ -52,15 +41,7 @@ changelog:
 archives:
   - id: binary
     builds:
-      - win
-    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
-    format_overrides:
-      - goos: windows
-        format: binary
-  - id: nowin
-    builds:
-      - nowin
-      - win
+      - kook-go
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     format_overrides:
       - goos: windows
