@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/bytedance/sonic"
+	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -38,7 +38,7 @@ const (
 
 func ParseSignal(data []byte) *Signal {
 	res := &Signal{}
-	err := sonic.Unmarshal(data, res)
+	err := jsoniter.Unmarshal(data, res)
 	if err != nil {
 		log.WithError(err).Errorf("parse signal failed")
 		return nil

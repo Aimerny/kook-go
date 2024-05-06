@@ -9,7 +9,6 @@ import (
 	"github.com/aimerny/kook-sdk/core/helper"
 	"github.com/aimerny/kook-sdk/core/model"
 	"github.com/avast/retry-go/v4"
-	"github.com/bytedance/sonic"
 	"github.com/gorilla/websocket"
 	"github.com/jasonlvhit/gocron"
 	"github.com/looplab/fsm"
@@ -259,12 +258,6 @@ func (s *State) ReceiveData(data []byte) (error, []byte) {
 			log.Error(err)
 			return err, nil
 		}
-	}
-
-	_, err := sonic.Get(data)
-	if err != nil {
-		log.WithError(err).Errorf("json unmarshal failed! %s", data)
-		return err, nil
 	}
 
 	signalData := model.ParseSignal(data)

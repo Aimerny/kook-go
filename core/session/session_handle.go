@@ -7,8 +7,8 @@ import (
 	"github.com/aimerny/kook-sdk/common"
 	"github.com/aimerny/kook-sdk/core/helper"
 	"github.com/aimerny/kook-sdk/core/model"
-	"github.com/bytedance/sonic"
 	"github.com/gorilla/websocket"
+	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 	"io"
 	"net/url"
@@ -96,7 +96,7 @@ func (s *State) WsConnect() error {
 func (s *State) sendHeartBeat() error {
 	pingPkg := model.NewPing(s.MaxSN)
 	if s.Conn != nil {
-		data, err := sonic.Marshal(pingPkg)
+		data, err := jsoniter.Marshal(pingPkg)
 		if err != nil {
 			log.WithError(err).Errorf("marshal ping pkg failed")
 			return err
