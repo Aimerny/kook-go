@@ -264,7 +264,7 @@ func (s *State) ReceiveData(data []byte) (error, []byte) {
 	if signalData == nil {
 		log.Warnf("Signal invalid! data:%v", data)
 	} else {
-		log.WithField("signalData", signalData).Infof("receive signalData from server")
+		log.WithField("signalData", signalData).Debug("receive signalData from server")
 		s.ReceiveQueue <- signalData
 	}
 	return nil, data

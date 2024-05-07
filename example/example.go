@@ -18,15 +18,16 @@ func main() {
 	if err != nil {
 		log.Errorf("%s", err)
 	}
-	globalSession.RegisterEventHandler(&KMarkDownEventHandler{})
+	globalSession.RegisterEventHandler(&MyEventHandler{})
 	globalSession.Start()
 }
 
-type KMarkDownEventHandler struct {
-	event.KMarkdownEventHandler
+type MyEventHandler struct {
+	event.BaseEventHandler
 }
 
-func (h *KMarkDownEventHandler) DoKMarkDown(event *model.Event) {
+// DoKMarkDown A simple example to process kmarkdown. It will repeat content from origin message.
+func (h *MyEventHandler) DoKMarkDown(event *model.Event) {
 	content := event.Content
 	log.Infof("event:%v", event)
 	extra := event.GetUserExtra()
@@ -36,7 +37,7 @@ func (h *KMarkDownEventHandler) DoKMarkDown(event *model.Event) {
 	}
 	req := &action.MessageCreateReq{
 		Type:     9,
-		Content:  content,
+		Content:  "Repeat by kook bot:" + content,
 		TargetId: event.TargetId,
 	}
 	action.MessageSend(req)
