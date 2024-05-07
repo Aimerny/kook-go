@@ -7,7 +7,8 @@ release:
   draft: true
   discussion_category_name: General
 builds:
-  - id: kook-go
+  - main: ./example/example.go
+    id: kook-go
     env:
       - CGO_ENABLED=0
       - GO111MODULE=on
@@ -54,3 +55,4 @@ nfpms:
       - deb
       - rpm
     maintainer: Aimerny
+    meta: true
