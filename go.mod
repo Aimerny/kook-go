@@ -1,4 +1,4 @@
-module github.com/aimerny/kook-sdk
+module github.com/aimerny/kook-go
 
 go 1.21.0
 

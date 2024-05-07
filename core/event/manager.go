@@ -1,7 +1,7 @@
 package event
 
 import (
-	"github.com/aimerny/kook-sdk/core/model"
+	"github.com/aimerny/kook-go/core/model"
 	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 	"time"

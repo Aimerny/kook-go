@@ -1,7 +1,7 @@
 package action
 
 import (
-	"github.com/aimerny/kook-sdk/common"
+	"github.com/aimerny/kook-go/common"
 )
 
 func MessageList() {
