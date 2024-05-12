@@ -35,7 +35,7 @@ func (h *MyEventHandler) DoKMarkDown(event *model.Event) {
 		log.Warnf("Bot message, skip")
 		return
 	}
-	req := &action.MessageCreateReq{
+	req := &model.MessageCreateReq{
 		Type:     9,
 		Content:  "Repeat by kook bot:" + content,
 		TargetId: event.TargetId,
