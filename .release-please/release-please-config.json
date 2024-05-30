@@ -2,7 +2,7 @@
   "pull-request-title-pattern": "chore${scope}: 🔖 release${component} ${version}",
   "separate-pull-requests": true,
   "packages": {
-    ".": {
+    "app": {
       "release-type": "go",
       "include-v-in-tag": true
     }
