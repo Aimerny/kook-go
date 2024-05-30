@@ -12,8 +12,7 @@ jobs:
 
     outputs:
       releases_created: ${{ steps.release-please.outputs.releases_created }}
-      tag_name: ${{ steps.release-please.outputs[format('{0}--tag_name', steps.get-path.outputs.path)] }}
-      path: ${{ steps.get-path.outputs.path }}
+      #tag_name: ${{ steps.release-please.outputs[format('{0}--tag_name', steps.get-path.outputs.path)] }}
 
     steps:
       - name: Release Please
@@ -22,12 +21,7 @@ jobs:
         with:
           config-file: .release-please/release-please-config.json
           manifest-file: .release-please/.release-please-manifest.json
-
-      - name: Get Path
-        id: get-path
-        if: ${{ steps.release-please.outputs.releases_created == 'true' }}
-        run: |
-          echo "path=${{ fromJson(steps.release-please.outputs.paths_released)[0] }}" >> $GITHUB_OUTPUT
+          skip-github-release: false
 
   goreleaser:
     runs-on: ubuntu-latest
@@ -50,6 +44,7 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
         with:
+          workdir: src/
           version: latest
           args: release --clean
         env:

@@ -6,6 +6,7 @@ before:
 release:
   draft: true
   discussion_category_name: General
+  replace_existing_artifacts: true
 builds:
   - main: example/example.go
     id: kook-go
