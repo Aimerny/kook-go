@@ -1,8 +1,8 @@
 package action
 
 import (
-	"github.com/aimerny/kook-go/common"
-	"github.com/aimerny/kook-go/core/helper"
+	"github.com/aimerny/kook-go/app/common"
+	"github.com/aimerny/kook-go/app/core/helper"
 	log "github.com/sirupsen/logrus"
 	"testing"
 )

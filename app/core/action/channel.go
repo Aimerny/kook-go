@@ -2,8 +2,8 @@ package action
 
 import (
 	"fmt"
-	"github.com/aimerny/kook-go/common"
-	"github.com/aimerny/kook-go/core/model"
+	"github.com/aimerny/kook-go/app/common"
+	"github.com/aimerny/kook-go/app/core/model"
 	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 )

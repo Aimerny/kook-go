@@ -2,8 +2,8 @@ package session
 
 import (
 	"context"
-	"github.com/aimerny/kook-go/core/helper"
-	"github.com/aimerny/kook-go/core/model"
+	"github.com/aimerny/kook-go/app/core/helper"
+	"github.com/aimerny/kook-go/app/core/model"
 	"github.com/mitchellh/mapstructure"
 	log "github.com/sirupsen/logrus"
 	"time"

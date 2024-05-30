@@ -1,7 +1,7 @@
 package event
 
 import (
-	"github.com/aimerny/kook-go/core/model"
+	"github.com/aimerny/kook-go/app/core/model"
 	"math"
 )
 

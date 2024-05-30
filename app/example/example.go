@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/aimerny/kook-go/common"
-	"github.com/aimerny/kook-go/core/action"
-	"github.com/aimerny/kook-go/core/event"
-	"github.com/aimerny/kook-go/core/model"
-	"github.com/aimerny/kook-go/core/session"
+	"github.com/aimerny/kook-go/app/common"
+	"github.com/aimerny/kook-go/app/core/action"
+	"github.com/aimerny/kook-go/app/core/event"
+	"github.com/aimerny/kook-go/app/core/model"
+	"github.com/aimerny/kook-go/app/core/session"
 	log "github.com/sirupsen/logrus"
 )
 

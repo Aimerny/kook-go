@@ -7,7 +7,7 @@ release:
   draft: true
   replace_existing_artifacts: true
 builds:
-  - main: example/example.go
+  - main: app/example/example.go
     id: kook-go
     env:
       - CGO_ENABLED=0

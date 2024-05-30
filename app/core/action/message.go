@@ -1,8 +1,8 @@
 package action
 
 import (
-	"github.com/aimerny/kook-go/common"
-	"github.com/aimerny/kook-go/core/model"
+	"github.com/aimerny/kook-go/app/common"
+	"github.com/aimerny/kook-go/app/core/model"
 )
 
 func MessageList() {
