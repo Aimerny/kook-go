@@ -18,7 +18,7 @@ var defaultConf = &Config{
 	Compress: true,
 }
 
-func ReadConfig(configPath string) *Config {
+func ReadConfig() *Config {
 	configData, err := os.ReadFile(configPath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -35,8 +35,4 @@ func ReadConfig(configPath string) *Config {
 		log.Panicf("read config file failed, err: %e", err)
 	}
 	return conf
-}
-
-func ReadDefaultConfig() *Config {
-	return ReadConfig(configPath)
 }

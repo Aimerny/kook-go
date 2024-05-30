@@ -12,7 +12,7 @@ import (
 func main() {
 
 	common.InitLogger()
-	config := common.ReadDefaultConfig()
+	config := common.ReadConfig()
 
 	globalSession, err := session.CreateSession(config.BotToken, config.Compress)
 	if err != nil {

@@ -8,7 +8,7 @@ import (
 )
 
 func Init() {
-	config := common.ReadConfig("./../../conf.json")
+	config := common.ReadConfig()
 	helper.InitHelper(config.BotToken)
 	common.InitLogger()
 }
