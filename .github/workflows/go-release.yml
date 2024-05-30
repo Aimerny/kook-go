@@ -49,18 +49,3 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Run GoReleaser
-#        uses: goreleaser/goreleaser-action@v5
-#        with:
-#          version: latest
-#          args: release --clean
-#          workdir: src/
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Upload assets
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: kook-go
-#          path: src/dist/kook-go_*
