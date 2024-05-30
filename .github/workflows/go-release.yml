@@ -2,12 +2,39 @@ name: release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    name: release please
+
+    outputs:
+      releases_created: ${{ steps.release-please.outputs.releases_created }}
+      tag_name: ${{ steps.release-please.outputs[format('{0}--tag_name', steps.get-path.outputs.path)] }}
+      path: ${{ steps.get-path.outputs.path }}
+
+    steps:
+      - name: Release Please
+        uses: googleapis/release-please-action@v4
+        id: release-please
+        with:
+          config-file: .release-please/release-please-config.json
+          manifest-file: .release-please/.release-please-manifest.json
+
+      - name: Get Path
+        id: get-path
+        if: ${{ steps.release-please.outputs.releases_created == 'true' }}
+        run: |
+          echo "path=${{ fromJson(steps.release-please.outputs.paths_released)[0] }}" >> $GITHUB_OUTPUT
+
   goreleaser:
     runs-on: ubuntu-latest
+    name: release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+
     steps:
       - name: Checkout
         run: |
