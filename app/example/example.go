@@ -12,9 +12,8 @@ import (
 func main() {
 
 	common.InitLogger()
-	config := common.ReadConfig()
 
-	globalSession, err := session.CreateSession(config.BotToken, config.Compress)
+	globalSession, err := session.CreateSession("Your kook-go bot token", true)
 	if err != nil {
 		log.Errorf("%s", err)
 	}

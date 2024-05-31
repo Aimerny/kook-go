@@ -36,14 +36,14 @@ const (
 )
 
 type UserExtra struct {
-	EventType    int      `json:"type" mapstructure:"event_type"`
-	GuildId      string   `json:"guild_id" mapstructure:"guild_id"`
-	ChannelName  string   `json:"channel_name" mapstructure:"channel_name"`
-	Mention      []string `json:"mention" mapstructure:"mention"`
-	MentionAll   bool     `json:"mention_all" mapstructure:"mention_all"`
-	MentionRoles []any    `json:"mention_roles" mapstructure:"mention_roles"`
-	MentionHere  bool     `json:"mention_here" mapstructure:"mention_here"`
-	Author       User     `json:"author" mapstructure:"author"`
+	EventType    EventType `json:"type" mapstructure:"event_type"`
+	GuildId      string    `json:"guild_id" mapstructure:"guild_id"`
+	ChannelName  string    `json:"channel_name" mapstructure:"channel_name"`
+	Mention      []string  `json:"mention" mapstructure:"mention"`
+	MentionAll   bool      `json:"mention_all" mapstructure:"mention_all"`
+	MentionRoles []any     `json:"mention_roles" mapstructure:"mention_roles"`
+	MentionHere  bool      `json:"mention_here" mapstructure:"mention_here"`
+	Author       User      `json:"author" mapstructure:"author"`
 }
 
 type SystemExtra struct {
