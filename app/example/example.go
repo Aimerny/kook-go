@@ -12,7 +12,6 @@ import (
 func main() {
 
 	common.InitLogger()
-
 	globalSession, err := session.CreateSession("Your kook-go bot token", true)
 	if err != nil {
 		log.Errorf("%s", err)
