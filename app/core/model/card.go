@@ -36,12 +36,12 @@ type CardModule struct {
 	Value     string        `json:"value,omitempty"`
 	Src       string        `json:"src,omitempty"`
 	StartTime int64         `json:"startTime,omitempty"`
-	EndTime   int64         `json:"endTime"`
+	EndTime   int64         `json:"endTime,omitempty"`
 }
 
 type CardText struct {
-	Type    string     `json:"type"`
-	Content string     `json:"content"`
+	Type    string     `json:"type,omitempty"`
+	Content string     `json:"content,omitempty"`
 	Cols    int        `json:"cols,omitempty"`
 	Fields  []CardText `json:"fields,omitempty"`
 }
