@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Aimerny/kook-go/compare/v1.2.0...v1.2.1) (2024-06-01)
+
+
+### Bug Fixes
+
+* :bug: some card fields set omitempty ([a7bb94c](https://github.com/Aimerny/kook-go/commit/a7bb94c1cc0628b58f57761fe4b69d98615c7df2))
+
 ## [1.2.0](https://github.com/Aimerny/kook-go/compare/v1.1.1...v1.2.0) (2024-05-31)
 
 
