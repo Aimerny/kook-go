@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Aimerny/kook-go/compare/v1.1.1...v1.2.0) (2024-05-31)
+
+
+### Features
+
+* :sparkles: support card message action ([31b4f80](https://github.com/Aimerny/kook-go/commit/31b4f8099ab65849cf28f1d67dc654c8f527dd82))
+
 ## [1.1.1](https://github.com/Aimerny/kook-go/compare/v1.1.0...v1.1.1) (2024-05-31)
 
 
