@@ -1,5 +1,11 @@
 package model
 
+type KookResponse[T interface{}] struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Data    T      `json:"data"`
+}
+
 // ==== Message ====
 
 type MessageCreateReq struct {
@@ -9,6 +15,12 @@ type MessageCreateReq struct {
 	Quote        string    `json:"quote"`
 	Nonce        string    `json:"nonce"`
 	TempTargetId string    `json:"temp_target_id"`
+}
+
+type MessageCreateResp struct {
+	MsgId       string `json:"msg_id"`
+	MsgTimestap int    `json:"msg_timestamp"`
+	Nonce       string `json:"nonce"`
 }
 
 type MessageUpdateReq struct {
