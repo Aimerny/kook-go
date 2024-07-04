@@ -2,11 +2,14 @@ package helper
 
 import (
 	"bytes"
+	"encoding/json"
+	"errors"
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
-	log "github.com/sirupsen/logrus"
 	"io"
 	"net/http"
+
+	jsoniter "github.com/json-iterator/go"
+	log "github.com/sirupsen/logrus"
 )
 
 var globalToken string = ""
@@ -25,6 +28,28 @@ func Get(url string) (*http.Response, error) {
 	}
 	request.Header.Set("Authorization", fmt.Sprintf("Bot %s", globalToken))
 	return client.Do(request)
+}
+func Post(url string, body interface{}) ([]byte, error) {
+	client := &http.Client{}
+	bodyData, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	buffer := bytes.NewBuffer(bodyData)
+
+	request, err := http.NewRequest("POST", url, buffer)
+	request.Header.Add("Authorization", fmt.Sprintf("Bot %s", globalToken))
+	request.Header.Add("Content-Type", "application/json; charset=UTF-8")
+	resp, err := client.Do(request)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return nil, errors.New(fmt.Sprintf("HTTP POST status code not success,:%d", resp.StatusCode))
+	}
+	temp, err := io.ReadAll(resp.Body)
+	return temp, nil
 }
 
 // PostWithJsonBody 发送Post请求到指定url,将body进行json序列化作为请求体
