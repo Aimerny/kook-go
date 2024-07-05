@@ -2,6 +2,7 @@ package action
 
 import (
 	"encoding/json"
+	"errors"
 
 	"github.com/aimerny/kook-go/app/common"
 	"github.com/aimerny/kook-go/app/core/helper"
@@ -17,17 +18,20 @@ func MessageDetail() {
 
 }
 
-func MessageSend(req *model.MessageCreateReq) *model.MessageCreateResp {
+func MessageSend(req *model.MessageCreateReq) (*model.MessageCreateResp, error) {
 	response, err := helper.Post(common.BaseUrl+common.V3Url+common.MessageCreate, &req)
 	if err != nil {
-		return nil
+		return nil, err
 	}
 	var result *model.KookResponse[*model.MessageCreateResp]
 	err = json.Unmarshal(response, &result)
-	if result.Code != 0 {
-		return nil
+	if err != nil {
+		return nil, err
 	}
-	return result.Data
+	if result.Code != 0 {
+		return nil, errors.New(result.Message)
+	}
+	return result.Data, nil
 }
 
 func MessageUpdate(req *model.MessageUpdateReq) error {
