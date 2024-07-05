@@ -29,6 +29,7 @@ func Get(url string) (*http.Response, error) {
 	request.Header.Set("Authorization", fmt.Sprintf("Bot %s", globalToken))
 	return client.Do(request)
 }
+
 func Post(url string, body interface{}) ([]byte, error) {
 	client := &http.Client{}
 	bodyData, err := json.Marshal(body)
