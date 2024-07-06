@@ -34,6 +34,7 @@ type CardModule struct {
 	Mode      string        `json:"mode,omitempty"`
 	Accessory *CardModule   `json:"accessory,omitempty"`
 	Value     string        `json:"value,omitempty"`
+	Click     string        `json:"click,omitempty"`
 	Src       string        `json:"src,omitempty"`
 	StartTime int64         `json:"startTime,omitempty"`
 	EndTime   int64         `json:"endTime,omitempty"`
