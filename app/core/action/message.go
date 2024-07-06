@@ -7,7 +7,6 @@ import (
 	"github.com/aimerny/kook-go/app/common"
 	"github.com/aimerny/kook-go/app/core/helper"
 	"github.com/aimerny/kook-go/app/core/model"
-	"github.com/sirupsen/logrus"
 )
 
 func MessageList() {
@@ -35,7 +34,6 @@ func MessageSend(req *model.MessageCreateReq) (*model.MessageCreateResp, error) 
 }
 
 func MessageUpdate(req *model.MessageUpdateReq) error {
-	logrus.Println("开始更新消息msg_id:", req.MsgId)
 	response, err := helper.Post(common.BaseUrl+common.V3Url+common.MessageUpdate, &req)
 	if err != nil {
 		return err
@@ -44,6 +42,9 @@ func MessageUpdate(req *model.MessageUpdateReq) error {
 	err = json.Unmarshal(response, &result)
 	if err != nil {
 		return err
+	}
+	if result.Code != 0 {
+		return errors.New(result.Message)
 	}
 	return nil
 }
