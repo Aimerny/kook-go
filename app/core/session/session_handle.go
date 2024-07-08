@@ -2,7 +2,6 @@ package session
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/aimerny/kook-go/app/common"
 	"github.com/aimerny/kook-go/app/core/helper"
@@ -26,7 +25,7 @@ func (s *State) GetGateway(compress bool) error {
 	defer response.Body.Close()
 	body, err := io.ReadAll(response.Body)
 	gatewayInfo := &model.GatewayResp{}
-	err = json.Unmarshal(body, gatewayInfo)
+	err = jsoniter.Unmarshal(body, gatewayInfo)
 	if err != nil {
 		return err
 	}
