@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Aimerny/kook-go/compare/v1.2.1...v1.2.2) (2024-07-08)
+
+
+### Performance Improvements
+
+* :zap: use jsoniter at whole project ([04d28d2](https://github.com/Aimerny/kook-go/commit/04d28d298f375cf42e75827e27548af43dbd3cc9))
+
 ## [1.2.1](https://github.com/Aimerny/kook-go/compare/v1.2.0...v1.2.1) (2024-06-01)
 
 
