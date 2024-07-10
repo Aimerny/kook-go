@@ -1,11 +1,10 @@
 package action
 
 import (
-	"encoding/json"
 	"errors"
+	jsoniter "github.com/json-iterator/go"
 
 	"github.com/aimerny/kook-go/app/common"
-	"github.com/aimerny/kook-go/app/core/helper"
 	"github.com/aimerny/kook-go/app/core/model"
 )
 
@@ -18,12 +17,12 @@ func MessageDetail() {
 }
 
 func MessageSend(req *model.MessageCreateReq) (*model.MessageCreateResp, error) {
-	response, err := helper.Post(common.BaseUrl+common.V3Url+common.MessageCreate, &req)
+	response, err := doPost(common.MessageCreate, req)
 	if err != nil {
 		return nil, err
 	}
 	var result *model.KookResponse[*model.MessageCreateResp]
-	err = json.Unmarshal(response, &result)
+	err = jsoniter.Unmarshal(response, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -34,12 +33,12 @@ func MessageSend(req *model.MessageCreateReq) (*model.MessageCreateResp, error) 
 }
 
 func MessageUpdate(req *model.MessageUpdateReq) error {
-	response, err := helper.Post(common.BaseUrl+common.V3Url+common.MessageUpdate, &req)
+	response, err := doPost(common.MessageUpdate, req)
 	if err != nil {
 		return err
 	}
 	var result *model.KookResponse[interface{}]
-	err = json.Unmarshal(response, &result)
+	err = jsoniter.Unmarshal(response, &result)
 	if err != nil {
 		return err
 	}

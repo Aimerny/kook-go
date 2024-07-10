@@ -22,6 +22,10 @@ func doGet(actionUrl string) ([]byte, error) {
 	return data, nil
 }
 
-func doPost(actionUrl string, body any) {
-	helper.PostWithJsonBody(common.BaseUrl+common.V3Url+actionUrl, body)
+func doPost(actionUrl string, body any) ([]byte, error) {
+	response, err := helper.Post(common.BaseUrl+common.V3Url+actionUrl, &body)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }
