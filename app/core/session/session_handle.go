@@ -20,7 +20,8 @@ func (s *State) GetGateway(compress bool) error {
 
 	response, err := helper.Get(gateway)
 	if err != nil {
-		log.Errorf("Get Gateway faild ! err:%e", err)
+		log.WithError(err).Error("Get Gateway failed !")
+		return err
 	}
 	defer response.Body.Close()
 	body, err := io.ReadAll(response.Body)
