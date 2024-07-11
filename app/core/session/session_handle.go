@@ -68,10 +68,11 @@ func (s *State) WsConnect() error {
 	log.Infof("connect to gateway: %s", wsUrl)
 
 	conn, resp, err := websocket.DefaultDialer.Dial(wsUrl, nil)
-	log.Infof("connect to gateway resp: %+v", resp)
 	if err != nil {
-		log.Panicf("connect to ws server failed, %e", err)
+		log.WithError(err).Error("connect to ws server failed")
+		return err
 	}
+	log.Infof("connect to gateway resp: %+v", resp)
 	// set ws conn
 	s.Conn.WebConn = conn
 	s.wsConnectSuccess()
