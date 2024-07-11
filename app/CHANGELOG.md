@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/Aimerny/kook-go/compare/v1.3.0...v1.3.1) (2024-07-11)
+
+
+### Bug Fixes
+
+* :bug: fix bot panic when network has broken ([2113c13](https://github.com/Aimerny/kook-go/commit/2113c13b7fa4191fdccf4a5fb639fefcc2618c18))
+
 ## [1.3.0](https://github.com/Aimerny/kook-go/compare/v1.2.2...v1.3.0) (2024-07-10)
 
 
