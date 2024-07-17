@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2](https://github.com/Aimerny/kook-go/compare/v1.3.1...v1.3.2) (2024-07-17)
+
+
+### Bug Fixes
+
+* :bug: fix websocket connection problem ([476d776](https://github.com/Aimerny/kook-go/commit/476d7768cd46eb80bf3bc666bc5e6484a884566b)), closes [#25](https://github.com/Aimerny/kook-go/issues/25)
+* :bug: get gateway continous ([82a39aa](https://github.com/Aimerny/kook-go/commit/82a39aa474660d42ac49b2b283df5ad0b356e3b0))
+
 ## [1.3.1](https://github.com/Aimerny/kook-go/compare/v1.3.0...v1.3.1) (2024-07-11)
 
 
