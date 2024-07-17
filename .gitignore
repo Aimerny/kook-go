@@ -2,3 +2,4 @@ conf.json
 session_id
 dist/
 .idea/
+app/main.go

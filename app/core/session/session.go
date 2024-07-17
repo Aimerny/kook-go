@@ -97,7 +97,7 @@ func CreateState(compress bool) *State {
 			// 接受到错误的hello包事件
 			{Name: EventHelloGatewayErrFail, Src: []string{StatusWSConnected}, Dst: StatusInit},
 			// 接受到pong包
-			{Name: EventPongReceived, Src: []string{StatusConnected, StatusWSConnected}, Dst: StatusConnected},
+			{Name: EventPongReceived, Src: []string{StatusConnected, StatusWSConnected, StatusRetry}, Dst: StatusConnected},
 			// 心跳超时
 			{Name: EventHeartbeatTimeout, Src: []string{StatusConnected}, Dst: StatusRetry},
 			// 重试心跳超时
@@ -120,7 +120,11 @@ func CreateState(compress bool) *State {
 			},
 			EventEnterPrefix + StatusRetry: func(_ context.Context, e *fsm.Event) {
 				// if turn to retry status,we should send heart beat twice.
-				state.Retry(e, func() error { state.retryHeartBeat(); return errors.New("retry next ping action") }, func() error { return state.sendHeartBeat() })
+				state.Retry(e, func() error {
+					log.Infof("retry heart beat...")
+					state.sendHeartBeat()
+					return errors.New("retry next ping action")
+				}, func() error { return state.sendHeartBeat() })
 			},
 		},
 	)
@@ -185,7 +189,9 @@ func (s *State) Start() {
 }
 
 func (s *State) Retry(event *fsm.Event, handler func() error, errorHandler func() error) {
-	log.Infof("retry by event:%v", event)
+	if event != nil {
+		log.Infof("retry by event:%s", event.Event)
+	}
 	log.Infof("now session state is: %s", s.FSM.Current())
 
 	startTime := s.StatusParams[s.FSM.Current()].StartTime

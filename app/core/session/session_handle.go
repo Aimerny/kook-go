@@ -85,7 +85,7 @@ func (s *State) WsConnect() error {
 			_, msg, err := conn.ReadMessage()
 			if err != nil {
 				log.Errorf("read msg error: %e", err)
-				break
+				continue
 			}
 			log.WithField("msg", msg).Trace("websocket data receive")
 			s.ReceiveData(msg)
@@ -111,15 +111,6 @@ func (s *State) sendHeartBeat() error {
 		} else {
 			s.PongTimeoutChan <- s.LastPingAt.Add(time.Duration(s.Timeout) * time.Second)
 		}
-	}
-	return nil
-}
-
-func (s *State) retryHeartBeat() error {
-	log.Infof("retry heart beat...")
-	err := s.sendHeartBeat()
-	if err != nil {
-		return err
 	}
 	return nil
 }

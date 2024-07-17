@@ -73,10 +73,17 @@ func StartSessionListener(s *State) {
 			select {
 			// if received pong signal, continue
 			case <-s.HeartBeatPongChan:
+				// check time
+				now := time.Now()
+				if now.After(outTime) {
+					log.WithField("outTime", outTime).WithField("now", now).Warn("this ping has timed out")
+					break
+				}
 				log.Debug("heart beat check successfully!")
 				if s.FSM.Is(StatusRetry) {
 					// retry success
-					s.FSM.SetState(StatusConnected)
+					log.Debug("retry success! pong received")
+					s.FSM.Event(context.Background(), EventPongReceived)
 				}
 				break
 			case <-time.After(time.Until(outTime)):
