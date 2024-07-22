@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/Aimerny/kook-go/compare/v1.3.2...v1.3.3) (2024-07-22)
+
+
+### Bug Fixes
+
+* :bug: fix ws connect([#26](https://github.com/Aimerny/kook-go/issues/26)) ([09b7dce](https://github.com/Aimerny/kook-go/commit/09b7dce7bf2688c0b6dcbb5b3d07137120d9b550))
+
 ## [1.3.2](https://github.com/Aimerny/kook-go/compare/v1.3.1...v1.3.2) (2024-07-17)
 
 
