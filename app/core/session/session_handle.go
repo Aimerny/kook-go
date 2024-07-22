@@ -3,16 +3,17 @@ package session
 import (
 	"context"
 	"fmt"
+	"io"
+	"net/url"
+	"sync"
+	"time"
+
 	"github.com/aimerny/kook-go/app/common"
 	"github.com/aimerny/kook-go/app/core/helper"
 	"github.com/aimerny/kook-go/app/core/model"
 	"github.com/gorilla/websocket"
 	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
-	"io"
-	"net/url"
-	"sync"
-	"time"
 )
 
 func (s *State) GetGateway(compress bool) error {
@@ -76,7 +77,7 @@ func (s *State) WsConnect() error {
 	log.Infof("connect to gateway resp: %+v", resp)
 	// set ws conn
 	s.Conn.WebConn = conn
-	s.wsConnectSuccess()
+	s.wsConnectSuccess() //上报连接成功
 	go func() {
 		defer func() {
 			conn.Close()
@@ -85,7 +86,8 @@ func (s *State) WsConnect() error {
 			_, msg, err := conn.ReadMessage()
 			if err != nil {
 				log.Errorf("read msg error: %e", err)
-				continue
+				s.wsConnectFail()
+				return
 			}
 			log.WithField("msg", msg).Trace("websocket data receive")
 			s.ReceiveData(msg)
@@ -94,6 +96,7 @@ func (s *State) WsConnect() error {
 	return nil
 }
 
+// sendHeartBeat 发送心跳
 func (s *State) sendHeartBeat() error {
 	pingPkg := model.NewPing(s.MaxSN)
 	if s.Conn != nil {
@@ -115,6 +118,7 @@ func (s *State) sendHeartBeat() error {
 	return nil
 }
 
+// StartCheckHeartbeat 检查心跳
 func (s *State) StartCheckHeartbeat() error {
 
 	err := s.HeartBeatCron.Every(30).Seconds().Do(s.sendHeartBeat)
