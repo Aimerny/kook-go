@@ -63,6 +63,7 @@ type GuildInfo struct {
 
 // ==== Channel ====
 type ChannelListResp struct {
+	WebResult
 	Data *ChannelResp `json:"data"`
 }
 

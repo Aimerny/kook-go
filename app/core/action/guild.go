@@ -17,12 +17,12 @@ func guildList(url string) *model.GuildListResp {
 	if err != nil {
 		log.WithError(err).Error("get guild failed")
 	}
-	guildResp := &model.KookResponse[*model.GuildListResp]{}
+	guildResp := &model.GuildListResp{}
 	err = jsoniter.Unmarshal(resp, &guildResp)
 	if err != nil {
 		log.WithError(err).Error("unmarshal resp failed")
 	}
-	return guildResp.Data
+	return guildResp
 }
 
 func PageGuildList(page, pageSize int) *model.GuildListResp {

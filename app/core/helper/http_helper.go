@@ -43,13 +43,12 @@ func Post(url string, body interface{}) ([]byte, error) {
 	return postAction(request)
 }
 
-func PostWithHeaders(url string, body interface{}, headers map[string]string) ([]byte, error) {
-	bodyData, err := json.Marshal(body)
+func PostWithHeaders(url string, body []byte, headers map[string]string) ([]byte, error) {
+	buffer := bytes.NewBuffer(body)
+	request, err := http.NewRequest("POST", url, buffer)
 	if err != nil {
 		return nil, err
 	}
-	buffer := bytes.NewBuffer(bodyData)
-	request, err := http.NewRequest("POST", url, buffer)
 	request.Header.Add("Authorization", fmt.Sprintf("Bot %s", globalToken))
 	for key, value := range headers {
 		request.Header.Add(key, value)

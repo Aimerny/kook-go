@@ -5,7 +5,6 @@ import (
 	"github.com/aimerny/kook-go/app/common"
 	"github.com/aimerny/kook-go/app/core/model"
 	jsoniter "github.com/json-iterator/go"
-	"io"
 	"mime/multipart"
 )
 
@@ -13,19 +12,18 @@ func AssetCreate(filename string, content []byte) (*model.AssetResp, error) {
 	body := &bytes.Buffer{}
 	writer := multipart.NewWriter(body)
 
-	file, err := writer.CreateFormFile("uploadfile", filename)
+	file, err := writer.CreateFormFile("file", filename)
 	if err != nil {
 		return nil, err
 	}
-	_, err = io.Copy(file, bytes.NewReader(content))
+	file.Write(content)
+	err = writer.Close()
 	if err != nil {
 		return nil, err
 	}
-	writer.Close()
-
 	headers := make(map[string]string)
 	headers["Content-Type"] = writer.FormDataContentType()
-	resp, err := doPostWithHeaders(common.AssetCreate, body, headers)
+	resp, err := doPostWithHeaders(common.AssetCreate, body.Bytes(), headers)
 	if err != nil {
 		return nil, err
 	}
