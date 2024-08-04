@@ -29,3 +29,7 @@ func doPost(actionUrl string, body any) ([]byte, error) {
 	}
 	return response, nil
 }
+
+func doPostWithHeaders(actionUrl string, body []byte, headers map[string]string) ([]byte, error) {
+	return helper.PostWithHeaders(common.BaseUrl+common.V3Url+actionUrl, body, headers)
+}

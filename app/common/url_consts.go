@@ -47,4 +47,7 @@ const (
 	// bot offline
 
 	OfflineBot = "/user/offline"
+
+	// Asset about
+	AssetCreate = "/asset/create"
 )

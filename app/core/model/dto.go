@@ -82,3 +82,8 @@ type ChannelInfo struct {
 	LimitAmount int         `json:"limit_amount"`
 	IsCategory  bool        `json:"is_category"`
 }
+
+// ===== Asset =====
+type AssetResp struct {
+	Url string `json:"url"`
+}

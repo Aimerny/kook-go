@@ -21,12 +21,12 @@ func channelList(guildId string, page, pageSize int) *model.ChannelListResp {
 	if err != nil {
 		log.WithError(err).Error("get channels failed")
 	}
-	guildResp := &model.ChannelListResp{}
-	err = jsoniter.Unmarshal(resp, &guildResp)
+	channelListResp := &model.ChannelListResp{}
+	err = jsoniter.Unmarshal(resp, &channelListResp)
 	if err != nil {
 		log.WithError(err).Error("unmarshal resp failed")
 	}
-	return guildResp
+	return channelListResp
 }
 
 func PageChannelList(guildId string, page, pageSize int) *model.ChannelListResp {
