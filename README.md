@@ -28,7 +28,7 @@ type MyEventHandler struct {
 	event.BaseEventHandler
 }
 
-// DoKMarkDown 一个简单的Kook机器人实现,接受到新消息时会发送回对应频道/私聊
+// DoKMarkDown A simple Kook robot implementation that sends new messages back to the corresponding channel/private chat
 func (h *MyEventHandler) DoKMarkDown(event *model.Event) {
 	content := event.Content
 	log.Infof("event:%v", event)
