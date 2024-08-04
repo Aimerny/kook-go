@@ -31,7 +31,6 @@ func Get(url string) (*http.Response, error) {
 }
 
 func Post(url string, body interface{}) ([]byte, error) {
-	client := &http.Client{}
 	bodyData, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
@@ -41,6 +40,25 @@ func Post(url string, body interface{}) ([]byte, error) {
 	request, err := http.NewRequest("POST", url, buffer)
 	request.Header.Add("Authorization", fmt.Sprintf("Bot %s", globalToken))
 	request.Header.Add("Content-Type", "application/json; charset=UTF-8")
+	return postAction(request)
+}
+
+func PostWithHeaders(url string, body interface{}, headers map[string]string) ([]byte, error) {
+	bodyData, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	buffer := bytes.NewBuffer(bodyData)
+	request, err := http.NewRequest("POST", url, buffer)
+	request.Header.Add("Authorization", fmt.Sprintf("Bot %s", globalToken))
+	for key, value := range headers {
+		request.Header.Add(key, value)
+	}
+	return postAction(request)
+}
+
+func postAction(request *http.Request) ([]byte, error) {
+	client := &http.Client{}
 	resp, err := client.Do(request)
 	if err != nil {
 		return nil, err

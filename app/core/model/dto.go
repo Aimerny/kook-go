@@ -63,7 +63,6 @@ type GuildInfo struct {
 
 // ==== Channel ====
 type ChannelListResp struct {
-	WebResult
 	Data *ChannelResp `json:"data"`
 }
 
@@ -81,4 +80,9 @@ type ChannelInfo struct {
 	Level       int         `json:"level"`
 	LimitAmount int         `json:"limit_amount"`
 	IsCategory  bool        `json:"is_category"`
+}
+
+// ===== Asset =====
+type AssetResp struct {
+	Url string `json:"url"`
 }
