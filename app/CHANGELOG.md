@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/Aimerny/kook-go/compare/v1.3.3...v1.4.0) (2024-08-06)
+
+
+### Features
+
+* :sparkles: add asset create action && add post custom header ([#29](https://github.com/Aimerny/kook-go/issues/29)) ([6a65e7d](https://github.com/Aimerny/kook-go/commit/6a65e7d85bc3f2de7cb2643caa2281a5f70c1a96))
+
 ## [1.3.3](https://github.com/Aimerny/kook-go/compare/v1.3.2...v1.3.3) (2024-07-22)
 
 
