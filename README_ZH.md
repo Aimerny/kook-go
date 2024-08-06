@@ -1,6 +1,10 @@
 简体中文 | [English](README_ZH.md)
 # KookGo
 
+[![Issues](https://img.shields.io/github/issues/Aimerny/kook-go?style=flat-square)](https://github.com/Aimerny/kook-go/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Aimerny/kook-go?style=flat-square)](https://github.com/Aimerny/kook-go/pulls)
+[![Release](https://img.shields.io/github/v/release/Aimerny/kook-go?include_prereleases&style=flat-square)](https://github.com/Aimerny/kook-go/releases)
+[![Github Release Downloads](https://img.shields.io/github/downloads/Aimerny/kook-go/total?label=Github%20Release%20Downloads&style=flat-square)](https://github.com/Aimerny/kook-go/releases)
 
 基于websocket协议的kook机器人开发sdk
 
