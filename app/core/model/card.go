@@ -26,15 +26,20 @@ const (
 type CardModule struct {
 	Type      string        `json:"type"`
 	Theme     CardThemeType `json:"theme,omitempty"`
+	Title     string        `json:"title,omitempty"`
 	Text      CardText      `json:"text,omitempty"`
 	Size      CardSize      `json:"size,omitempty"`
 	Modules   []CardModule  `json:"modules,omitempty"`
 	Fields    []CardModule  `json:"fields,omitempty"`
 	Elements  []CardModule  `json:"elements,omitempty"`
+	Content   string        `json:"content,omitempty"`
 	Mode      string        `json:"mode,omitempty"`
 	Accessory *CardModule   `json:"accessory,omitempty"`
 	Value     string        `json:"value,omitempty"`
+	Cover     string        `json:"cover,omitempty"`
 	Click     string        `json:"click,omitempty"`
+	Code      string        `json:"code,omitempty"`
+	Circle    bool          `json:"circle,omitempty"`
 	Src       string        `json:"src,omitempty"`
 	StartTime int64         `json:"startTime,omitempty"`
 	EndTime   int64         `json:"endTime,omitempty"`
@@ -84,6 +89,13 @@ func NewKMarkdown(content string) *CardModule {
 			Type:    "kmarkdown",
 			Content: content,
 		},
+	}
+}
+
+func NewInvite(code string) *CardModule {
+	return &CardModule{
+		Type: "invite",
+		Code: code,
 	}
 }
 
