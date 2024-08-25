@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/Aimerny/kook-go/compare/v1.4.0...v1.5.0) (2024-08-24)
+
+
+### Features
+
+* :sparkles: improve some features of the card module ([1adcc61](https://github.com/Aimerny/kook-go/commit/1adcc61903dfcc5a4cad4a815f8a2b237d0b836e))
+
 ## [1.4.0](https://github.com/Aimerny/kook-go/compare/v1.3.3...v1.4.0) (2024-08-06)
 
 
