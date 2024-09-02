@@ -146,6 +146,7 @@ func (s *State) wsConnectSuccess() {
 
 func (s *State) wsConnectFail() error {
 	log.Errorf("ws connect fail")
+	s.HeartBeatCron.Clear()
 	s.FSM.Event(context.Background(), EventWsConnectFail)
 	return nil
 }
