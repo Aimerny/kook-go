@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/Aimerny/kook-go/compare/v1.5.0...v1.5.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* :bug: Fix potential concurrency issue in EventQueue's ([#35](https://github.com/Aimerny/kook-go/issues/35)) ([924b4f7](https://github.com/Aimerny/kook-go/commit/924b4f776b11e4ec82d7199e36f7de998731e3c0))
+* 🐛 Heartbeat scheduled task repeats during reconnection ([#38](https://github.com/Aimerny/kook-go/issues/38)) ([840398c](https://github.com/Aimerny/kook-go/commit/840398ce6ef820481023966bf9859b9f8360b9ca))
+
 ## [1.5.0](https://github.com/Aimerny/kook-go/compare/v1.4.0...v1.5.0) (2024-08-24)
 
 
